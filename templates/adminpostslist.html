@@ -1,0 +1,23 @@
+<!--Posts list to administration-->
+{% extends "BACKtemplate.html" %}
+{% block conteudo %}
+<table class="table table-striped table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+                    <tr>
+                        <td>{{ post.nomePost }}</td>
+                        <td>{{ post.categoriaPost }}</td>
+                        <td>{{ post.dataPost }}</td>
+                        <td><a href="{{url_for('deletepost', _postid=post._id)}}"> Remove Post</td>
+                    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

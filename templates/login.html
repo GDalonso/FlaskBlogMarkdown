@@ -1,0 +1,11 @@
+<!--login Form, extended from template-->
+{% extends "BACKtemplate.html" %}
+{% block conteudo %}
+        <form method="POST" action="{{ url_for('authenticatelogin') }}">
+            <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
+            <p><label>Username:</label> <input class="form-control" type="text" name="usuario" required></p>
+            <p><label>Password:</label> <input class="form-control" type="password" name="senha" required></p>
+            <p><button class="btn btn-primary" type="submit">Log in</button></p>
+        </form>
+    </div>
+{% endblock %}

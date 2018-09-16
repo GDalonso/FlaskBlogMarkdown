@@ -1,0 +1,55 @@
+<!--The back pages template extended by other pages-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog Umobiteam</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</head>
+  <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('index') }}">UmobiTeam</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('formcreatepost') }}">New Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('postslist') }}">Delete Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('formcreateuser') }}">Create User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('userslist') }}">Delete User</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('formlogin') }}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block conteudo %}{% endblock %}
+    </div>
+  </body>
+</html>
